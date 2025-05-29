@@ -1,0 +1,175 @@
+
+🔧 BACKEND STRUCTURE — Node.js + Express + MongoDB
+bash
+Copy
+Edit
+/backend
+│
+├── controllers/             # Route logic separated from routing
+│   ├── authController.js
+│   ├── competitionController.js
+│   ├── matchController.js
+│   ├── userController.js
+│   ├── feedbackController.js
+│   └── pdfController.js
+│
+├── middleware/              # Role-based auth and error handling
+│   ├── authMiddleware.js
+│   └── errorHandler.js
+│
+├── models/                  # MongoDB schemas via Mongoose
+│   ├── User.js
+│   ├── Competition.js
+│   ├── Team.js
+│   ├── Match.js
+│   └── Feedback.js
+│
+├── routes/                  # Organized RESTful endpoints
+│   ├── authRoutes.js
+│   ├── competitionRoutes.js
+│   ├── matchRoutes.js
+│   ├── feedbackRoutes.js
+│   └── userRoutes.js
+│
+├── utils/                   # Utility modules
+│   ├── bracketGenerator.js
+│   ├── jwtUtils.js
+│   └── pdfGenerator.js
+│
+├── config/                  # DB connection and environment setup
+│   └── db.js
+│
+├── .env                     # Secrets (DB URI, JWT secret)
+├── server.js                # Entry point
+└── package.json
+✅ Backend Analysis
+Layer	Description
+controllers/	Clean separation of logic from HTTP routes
+middleware/	Reusable JWT auth, role guards
+models/	Designed for NoSQL, allows nested docs (e.g., teams inside a competition)
+routes/	RESTful routes grouped logically
+utils/	Encapsulates bracket logic, JWT verification, and PDF generation
+config/db.js	Modular DB connection using mongoose.connect()
+
+✅ Scalable, testable, modular. Can later add:
+
+WebSocket support (socket.io)
+
+Caching (redis)
+
+Background job queue (e.g. for PDF gen)
+
+📱 FRONTEND STRUCTURE — React Native (Expo)
+bash
+Copy
+Edit
+/frontend
+│
+├── assets/                     # Images, logos, etc.
+│
+├── components/                 # Reusable UI components
+│   ├── Bracket.js
+│   ├── MatchCard.js
+│   ├── TeamForm.js
+│   └── RoleBasedView.js
+│
+├── context/                    # Global state (e.g., auth)
+│   └── AuthContext.js
+│
+├── navigation/                 # React Navigation stack
+│   ├── AppNavigator.js
+│   └── RoleNavigator.js
+│
+├── screens/                    # Role-specific screens
+│   ├── common/
+│   │   ├── LoginScreen.js
+│   │   ├── SignupScreen.js
+│   │   ├── FeedbackScreen.js
+│   │   └── ViewBracketsScreen.js
+│   │
+│   ├── admin/
+│   │   ├── AdminDashboard.js
+│   │   └── UserManagement.js
+│   │
+│   ├── organizer/
+│   │   ├── OrganizerDashboard.js
+│   │   ├── CreateCompetition.js
+│   │   ├── AddTeamsScreen.js
+│   │   ├── ScheduleMatchScreen.js
+│   │   ├── SubmitResultScreen.js
+│   │   ├── GeneratePDFScreen.js
+│   │   └── BracketViewScreen.js
+│   │
+│   └── participant/
+│       ├── ParticipantHome.js
+│       └── MatchResultsScreen.js
+│
+├── services/                   # API integrations
+│   └── api.js
+│
+├── utils/                      # Token storage, validations
+│   ├── tokenStorage.js
+│   └── validators.js
+│
+├── App.js                      # App entry point
+└── app.json
+✅ Frontend Analysis
+Layer	Description
+screens/	Organized per role for clarity
+components/	Reusable UI elements
+context/	Centralized auth token and user role
+services/api.js	Axios base API calls with token handling
+navigation/	Role-based routing using react-navigation
+utils/	Utility for local storage, validation, etc.
+
+✅ Mobile-first, future-proof. Supports:
+
+Push notifications (via expo-notifications)
+
+Offline sync in future (using SQLite or AsyncStorage)
+
+Role-based UI rendering
+
+🧠 Suggested Enhancements (Advanced)
+Area	Enhancement	Benefit
+Brackets	Animated bracket transitions	Better UX
+Scores	Live match updates via WebSockets	Real-time experience
+Notifications	Push reminders for matches	Increased engagement
+Analytics	Dashboard with charts for team performance	Useful insights
+Monetization	Premium accounts with more features	Revenue stream
+Localization	Multi-language support	Wider audience
+Social	Shareable public brackets	Virality
+
+🛠️ Tools & Libraries Recap
+Backend
+express, mongoose, jsonwebtoken, bcryptjs, pdfkit, multer
+
+Frontend
+expo, axios, react-navigation, react-native-svg, react-native-paper, @react-native-async-storage/async-storage
+
+
+
+
+Admin:
+10. screens/admin/AdminDashboard.js
+11. screens/admin/UserManagement.js
+
+Organizer:
+12. screens/organizer/OrganizerDashboard.js
+13. screens/organizer/CreateCompetition.js
+14. screens/organizer/AddTeamsScreen.js
+15. screens/organizer/ScheduleMatchScreen.js
+16. screens/organizer/SubmitResultScreen.js
+17. screens/organizer/GeneratePDFScreen.js
+18. screens/organizer/BracketViewScreen.js
+
+Participant:
+19. screens/participant/ParticipantHome.js
+20. screens/participant/MatchResultsScreen.js
+
+Common:
+21. screens/common/FeedbackScreen.js
+22. screens/common/ViewBracketsScreen.js
+23. navigation/RoleNavigator.js
+24. navigation/AppNavigator.js
+25. App.js

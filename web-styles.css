@@ -1,0 +1,14 @@
+/* Web-specific styles and media queries can go here */
+
+/* Example Media Query */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px; /* Reduce base font size on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 12px; /* Further reduce font size on very small screens */
+  }
+}

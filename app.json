@@ -1,0 +1,49 @@
+{
+  "expo": {
+    "name": "Uttraan",
+    "slug": "Uttraan",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/spl.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/spl.png",
+      "resizeMode": "cover"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/spl.png"
+      },
+      "softwareKeyboardLayoutMode": "pan",
+      "permissions": [
+        "NOTIFICATIONS",
+        "VIBRATE",
+        "POST_NOTIFICATIONS",
+        "RECEIVE_BOOT_COMPLETED"
+      ],
+      "plugins": [
+        [
+          "expo-notifications",
+          {
+            "icon": "./assets/icon.png",
+            "color": "#ffffff",
+            "defaultChannel": "default",
+            "enableBackgroundRemoteNotifications": true
+          }
+        ]
+      ],
+      "edgeToEdgeEnabled": true,
+      "package": "com.s_amoin_a.Uttraan"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "3c1e42df-8ae8-4c5f-8334-eca0eb593282"
+      }
+    },
+    "owner": "s_amoin_a"
+  }
+}
